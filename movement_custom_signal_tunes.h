@@ -47,6 +47,40 @@ int8_t signal_tune[] = {
 };
 #endif // SIGNAL_TUNE_ZELDA_SECRET
 
+#ifdef SIGNAL_TUNE_POKEMON_ITEM
+int8_t signal_tune[] = {
+    BUZZER_NOTE_E5, 5,
+    BUZZER_NOTE_REST, 1,
+    BUZZER_NOTE_E5, 5,
+    BUZZER_NOTE_REST, 1,
+    BUZZER_NOTE_E5, 5,
+    BUZZER_NOTE_REST, 1,
+    BUZZER_NOTE_B5, 24,
+    0
+};
+#endif // SIGNAL_TUNE_POKEMON_ITEM
+
+#ifdef SIGNAL_TUNE_WINCHESTER
+int8_t signal_tune[] = {
+    BUZZER_NOTE_A4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_F4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_G4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_C4, 40,
+    BUZZER_NOTE_REST, 20,
+    BUZZER_NOTE_F4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_G4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_A4, 20,
+    BUZZER_NOTE_REST, 2,
+    BUZZER_NOTE_F4, 40,
+    0
+};
+#endif // SIGNAL_TUNE_WINCHESTER
+
 #ifdef SIGNAL_TUNE_MARIO_THEME
 int8_t signal_tune[] = {
     BUZZER_NOTE_E6, 7,
