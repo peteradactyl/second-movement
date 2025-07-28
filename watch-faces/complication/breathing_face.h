@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Ruben Nic
+ * Copyright (c) 2023 Bernd Plontsch
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,41 +22,33 @@
  * SOFTWARE.
  */
 
-#ifndef CLOSE_ENOUGH_CLOCK_FACE_H_
-#define CLOSE_ENOUGH_CLOCK_FACE_H_
+#ifndef BREATHING_FACE_H_
+#define BREATHING_FACE_H_
 
 /*
- * CLOSE ENOUGH CLOCK FACE
+ * BOXED BREATHING face
  *
- * Displays the current time; but only in periods of 5.
- * Just in the in the formats of:
- * - "10 past 5"
- * - "15 to 7"
- * - "6 o'clock"
+ * Breathing is a complication for guiding boxed breathing sessions.
+ * Boxed breathing is a technique to help you stay calm and improve
+ * concentration in stressful situations.
  *
+ * Usage: Timed messages will cycle as long as this face is active.
+ * Press ALARM to toggle between sound and LED indication for phases.
  */
 
 #include "movement.h"
 
-typedef struct {
-    int prev_five_minute_period;
-    int prev_min_checked;
-    uint8_t last_battery_check;
-    bool battery_low;
-    bool alarm_enabled;
-} close_enough_clock_state_t;
+void breathing_face_setup(uint8_t watch_face_index, void ** context_ptr);
+void breathing_face_activate(void *context);
+bool breathing_face_loop(movement_event_t event, void *context);
+void breathing_face_resign(void *context);
 
-void close_enough_clock_face_setup(uint8_t watch_face_index, void ** context_ptr);
-void close_enough_clock_face_activate(void *context);
-bool close_enough_clock_face_loop(movement_event_t event, void *context);
-void close_enough_clock_face_resign(void *context);
-
-#define close_enough_clock_face ((const watch_face_t){ \
-    close_enough_clock_face_setup, \
-    close_enough_clock_face_activate, \
-    close_enough_clock_face_loop, \
-    close_enough_clock_face_resign, \
+#define breathing_face ((const watch_face_t){ \
+    breathing_face_setup, \
+    breathing_face_activate, \
+    breathing_face_loop, \
+    breathing_face_resign, \
     NULL, \
 })
 
-#endif // CLOSE_ENOUGH_CLOCK_FACE_H_
+#endif // BREATHING_FACE_H_

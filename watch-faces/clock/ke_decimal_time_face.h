@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Bernd Plontsch
+ * Copyright (c) 2025 Joey Castillo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,36 @@
  * SOFTWARE.
  */
 
-#ifndef BREATHING_FACE_H_
-#define BREATHING_FACE_H_
-
-/*
- * BOXED BREATHING face
- *
- * Breathing is a complication for guiding boxed breathing sessions.
- * Boxed breathing is a technique to help you stay calm and improve
- * concentration in stressful situations.
- *
- * Usage: Timed messages will cycle as long as this face is active.
- * Press ALARM to toggle sound.
- */
+#pragma once
 
 #include "movement.h"
 
-void breathing_face_setup(uint8_t watch_face_index, void ** context_ptr);
-void breathing_face_activate(void *context);
-bool breathing_face_loop(movement_event_t event, void *context);
-void breathing_face_resign(void *context);
+/*
+ * Kè (Decimal Time)
+ *
+ * This watch face is an optional replacement for the standard Clock face.
+ * Like the standard Clock face, it displays the time and weekday at the top,
+ * but the main line shows the percentage of the day that has passed, with midnight
+ * represented by 0% and 11:59 PM as 99.9%.
+ *
+ * Name comes from here: https://en.wikipedia.org/wiki/Traditional_Chinese_timekeeping#One-hundredth_of_a_day:_kè
+ *
+ */
 
-#define breathing_face ((const watch_face_t){ \
-    breathing_face_setup, \
-    breathing_face_activate, \
-    breathing_face_loop, \
-    breathing_face_resign, \
+typedef struct {
+    uint8_t previous_day;
+    uint32_t previous_time;
+} ke_decimal_time_state_t;
+
+void ke_decimal_time_face_setup(uint8_t watch_face_index, void ** context_ptr);
+void ke_decimal_time_face_activate(void *context);
+bool ke_decimal_time_face_loop(movement_event_t event, void *context);
+void ke_decimal_time_face_resign(void *context);
+
+#define ke_decimal_time_face ((const watch_face_t){ \
+    ke_decimal_time_face_setup, \
+    ke_decimal_time_face_activate, \
+    ke_decimal_time_face_loop, \
+    ke_decimal_time_face_resign, \
     NULL, \
 })
-
-#endif // BREATHING_FACE_H_
