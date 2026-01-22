@@ -34,10 +34,12 @@ const watch_face_t watch_faces[] = {
     temperature_display_face,
     stopwatch_face,
     countdown_face,
+    close_enough_face,
     world_clock_face,
     activity_logging_face,
     accelerometer_status_face,
     temperature_logging_face,
+    probability_face,
     settings_face,
     set_time_face,
     advanced_alarm_face
@@ -51,10 +53,10 @@ const watch_face_t watch_faces[] = {
  * Some folks also like to use this to hide the preferences and time set faces from the normal rotation.
  * If you don't want any faces to be excluded, set this to 0 and a long Mode press will have no effect.
  */
-#define MOVEMENT_SECONDARY_FACE_INDEX (MOVEMENT_NUM_FACES - 7)
+#define MOVEMENT_SECONDARY_FACE_INDEX (MOVEMENT_NUM_FACES - 9)
 
 /* Custom hourly chime tune. Check movement_custom_signal_tunes.h for options. */
-#define SIGNAL_TUNE_WINCHESTER
+#define SIGNAL_TUNE_POKEMON_ITEM
 
 /* Determines the intensity of the led colors
  * Set a hex value 0-15 with 0x0 being off and 0xF being max intensity
